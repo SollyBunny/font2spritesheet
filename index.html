@@ -205,7 +205,6 @@
 		const ctx = can.getContext("2d");
 		const todo = new Set();
 		const done = new Set();
-		let wait = 5;
 		function betterMeasure(measure) {
 			return {
 				width: measure.actualBoundingBoxLeft + measure.actualBoundingBoxRight,
@@ -215,10 +214,6 @@
 		}
 		function frame() {
 			requestAnimationFrame(frame);
-			if (wait > 0) {
-				wait -= 1;
-				return;
-			}
 			const font = todo.values().find(i => i);
 			if (!font)
 				return;
@@ -320,7 +315,6 @@
 					out[part] = v;
 				}
 				todo.add(out);
-				wait += 60;
 			}
 		}
 	</script>
